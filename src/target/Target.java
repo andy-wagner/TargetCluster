@@ -74,13 +74,14 @@ public class Target implements Serializable{
         return synonym;
     }
 
+    public TargetConfig getTargetConfig() {
+        return targetConfig;
+    }
+
     @Override
     public String toString() {
         return "Target{" +
-                "category=" + category +
-                ", synonym=" + synonym +
-                ", keywords=" + keywords +
-                ", caseSensitive=" + caseSensitive +
+                "targetConfig=" + targetConfig +
                 '}';
     }
 
@@ -148,17 +149,17 @@ public class Target implements Serializable{
 
         /**
          * A method for adding a synonym which is considered as same with domain category already existing.
-         * @param domain The synonym to be added
          * @param original The domain category name already existing - This parameter would be ignored when the category map does not contain this.
+         * @param domain The synonym to be added
          * @return builder instance
          */
-        public TargetBuilder addSynonym(String domain, String original){
+        public TargetBuilder addSynonym(String original, String domain){
             if(!targetConfig.getCategory().containsKey(original)){
                 if(this.targetConfig.isDebug()) System.err.println("[TargetBuilder] Tried to put synonym for the word not existing in the category set[" + original + "]. Ignoring this operation.");
                 return this;
             }
             if(!targetConfig.getCategory().containsKey(domain)){
-                if(this.targetConfig.isDebug()) System.err.println("[TargetBuilder] Tried to put synonym which is existing in domain category set. Ignoring this operation since the operation can occur recursive error.");
+                if(this.targetConfig.isDebug()) System.err.println("[TargetBuilder] Tried to put synonym which is existing in domain category set[" + domain + "]. Ignoring this operation since the operation can occur recursive error.");
                 return this;
             }
             if(targetConfig.isDebug()){
