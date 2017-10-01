@@ -19,7 +19,8 @@ public class Main {
                 .addSynonyms("Seoul", "Tokyo", "seoul-si") // Tokyo - Error(Existing in category)
                 .build();
 
-        // Tried to put synonym which is existing in domain category set[Tokyo]. Ignoring this operation since the operation can occur recursive error.
+        // Tried to put synonym which is existing in domain category set[Tokyo].
+        // Ignoring this operation since the operation can occur recursive error.
 
         // Target{
         // targetConfig=TargetConfig{

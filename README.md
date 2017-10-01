@@ -31,7 +31,8 @@ public static void main(String... args) {
                 .addSynonyms("Seoul", "Tokyo", "seoul-si") // Tokyo - Error(Existing in category)
                 .build();
 
-        // Tried to put synonym which is existing in domain category set[Tokyo]. Ignoring this operation since the operation can occur recursive error.
+        // Tried to put synonym which is existing in domain category set[Tokyo]. 
+        // Ignoring this operation since the operation can occur recursive error.
 
         // Target{
         // targetConfig=TargetConfig{
@@ -47,6 +48,6 @@ public static void main(String... args) {
 
 > Licenses
 
-![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)
 
 - Aho CoraSick Algorithm For Efficient String Matching [0.4.0]
