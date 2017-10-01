@@ -91,6 +91,9 @@ public class Target implements Serializable{
      */
     public static class TargetBuilder {
 
+        /**
+         * A Configuration Object for builder pattern
+         */
         private final TargetConfig targetConfig;
 
         private TargetBuilder(){
@@ -154,6 +157,10 @@ public class Target implements Serializable{
                 if(this.targetConfig.isDebug()) System.err.println("[TargetBuilder] Tried to put synonym for the word not existing in the category set[" + original + "]. Ignoring this operation.");
                 return this;
             }
+            if(!targetConfig.getCategory().containsKey(domain)){
+                if(this.targetConfig.isDebug()) System.err.println("[TargetBuilder] Tried to put synonym which is existing in domain category set. Ignoring this operation since the operation can occur recursive error.");
+                return this;
+            }
             if(targetConfig.isDebug()){
                 if(this.targetConfig.getSynonym().containsKey(domain)){
                     String origin = this.targetConfig.getSynonym().get(domain);
@@ -171,18 +178,8 @@ public class Target implements Serializable{
          * @return builder instance
          */
         public TargetBuilder addSynonyms(String original, Collection<String> domains){
-            if(!targetConfig.getCategory().containsKey(original)){
-                if(this.targetConfig.isDebug()) System.err.println("[TargetBuilder] Tried to put synonym for the word not existing in the category set[" + original + "]. Ignoring this operation.");
-                return this;
-            }
             for(String domain : domains) {
-                if (this.targetConfig.getSynonym().containsKey(domain)) {
-                    if(this.targetConfig.isDebug()){
-                        String origin = targetConfig.getSynonym().get(domain);
-                        System.err.println("[TargetBuilder] Tried to put the synonym already existing. [" + domain + "]. Original word[" + origin + "] will be overwritten with word[" + original + "].");
-                    }
-                    this.targetConfig.getSynonym().put(domain, original);
-                }
+                addSynonym(domain, original);
             }
             return this;
         }
@@ -194,7 +191,7 @@ public class Target implements Serializable{
          * @return builder instance
          */
         public TargetBuilder addSynonyms(String original, String... domains){
-            addSynonyms(original, domains);
+            addSynonyms(original, Arrays.asList(domains));
             return this;
         }
 
