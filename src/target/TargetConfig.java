@@ -3,6 +3,11 @@ package target;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * @author Euijin.Ham
+ * @version 1.0.0
+ * @description A Capsule Class for target class configuration for builder pattern
+ */
 public class TargetConfig {
     /**
      * Member properties Declarations
