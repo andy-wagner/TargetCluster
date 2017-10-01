@@ -1,6 +1,6 @@
 # TargetCluster
 
-#### A Clustering Utilities for collecting text-based statistic data with intuitive builder.
+#### A Clustering Utilities for collecting text-based statistic data with a intuitive builder.
 
 > cluster
 - A Package for implementing analyzing and clustering logics.
@@ -46,7 +46,7 @@ public static void main(String... args) {
     }
 ```
 
-> Licenses
+### Licenses
 
 ![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)
 
