@@ -120,13 +120,33 @@ public class Target implements Serializable{
         }
 
         /**
+         * A method for adding a categories
+         * @param names String based target category name
+         * @return builder instance
+         */
+        public TargetBuilder addCategories(String... names){
+            addCategories(Arrays.asList(names));
+            return this;
+        }
+
+        /**
+         * A method for adding a categories
+         * @param names String based target category name
+         * @return builder instance
+         */
+        public TargetBuilder addCategories(Collection<String> names){
+            for(String s : names) addCategory(s);
+           return this;
+        }
+
+        /**
          * A method for adding a detailed category. The domain category in parameter would be automatically put If the domain category encloses the detailed category does not exist.
          * @param toCategory
          * @param detail String based detailed target category name
          * @return builder instance
          */
         public TargetBuilder addDetail(String toCategory, String detail){
-            if(!this.targetConfig.getCategory().containsKey(toCategory)) {
+            if(this.targetConfig.getCategory().containsKey(toCategory)) {
                 this.targetConfig.getCategory().get(toCategory).add(detail);
             }else{
                 if(targetConfig.isDebug()) System.err.println("[TargetBuilder] Tried to put the detail on the category not existing. Automatically putting the category named [" + toCategory + "].");
@@ -134,6 +154,28 @@ public class Target implements Serializable{
                 tempSet.add(detail);
                 this.targetConfig.getCategory().put(toCategory, tempSet);
             }
+            return this;
+        }
+
+        /**
+         * A method for adding a detailed categories. The domain category in parameter would be automatically put If the domain category encloses the detailed category does not exist.
+         * @param toCategory
+         * @param details String based detailed target category names
+         * @return builder instance
+         */
+        public TargetBuilder addDetails(String toCategory, String... details){
+            addDetails(toCategory, Arrays.asList(details));
+            return this;
+        }
+
+        /**
+         * A method for adding a detailed categories. The domain category in parameter would be automatically put If the domain category encloses the detailed category does not exist.
+         * @param toCategory
+         * @param details String based detailed target category names
+         * @return builder instance
+         */
+        public TargetBuilder addDetails(String toCategory, Collection<String> details){
+            for(String s : details) addDetail(toCategory, s);
             return this;
         }
 
@@ -158,7 +200,7 @@ public class Target implements Serializable{
                 if(this.targetConfig.isDebug()) System.err.println("[TargetBuilder] Tried to put synonym for the word not existing in the category set[" + original + "]. Ignoring this operation.");
                 return this;
             }
-            if(!targetConfig.getCategory().containsKey(domain)){
+            if(targetConfig.getCategory().containsKey(domain)){
                 if(this.targetConfig.isDebug()) System.err.println("[TargetBuilder] Tried to put synonym which is existing in domain category set[" + domain + "]. Ignoring this operation since the operation can occur recursive error.");
                 return this;
             }
@@ -180,7 +222,7 @@ public class Target implements Serializable{
          */
         public TargetBuilder addSynonyms(String original, Collection<String> domains){
             for(String domain : domains) {
-                addSynonym(domain, original);
+                addSynonym(original, domain);
             }
             return this;
         }

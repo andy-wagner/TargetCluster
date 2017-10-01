@@ -15,7 +15,15 @@ public class TargetConfig {
     private Map<String, Set<String>> category;
     private Map<String, String> synonym;
     private Set<String> keywords;
+
+    /**
+     * This variable does not mean that The target instance data is sensitive for case.
+     * It means that case would be considered when the analysis is conducted
+     */
     private boolean caseSensitive;
+    /**
+     * The variable for flag to decide if building error log would be shown or not
+     */
     private boolean debug;
 
     public TargetConfig() {
