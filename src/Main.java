@@ -16,6 +16,7 @@ public class Main {
                 .addSynonyms("Keyword", "Keyword1", "asdf")
                 .addSynonym("Keyword", "Keyword2")
                 .build();
+
     }
 
 }
