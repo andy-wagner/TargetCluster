@@ -3,6 +3,9 @@ package cluster;
 import source.DataSource;
 import target.Target;
 
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  * @author EuiJin.Ham
  * @version 1.0.0
@@ -11,22 +14,28 @@ import target.Target;
  */
 public abstract class SimpleCluster<T> extends Cluster<T> {
 
+    public SimpleCluster(Target target, List<DataSource> dataSources){
+        super(target, dataSources);
+    }
+
     public SimpleCluster(Target target, DataSource dataSource){
         super(target, dataSource);
-
     }
 
     @Override
     public void make() {
+        if(this.clusteringRawMap == null) this.clusteringRawMap = new ConcurrentHashMap<>();
+        final List<String> mergedList = DataSource.mergeAsList(this.dataSources);
+
+        for(String datum : mergedList){
+            // TODO
+        }
 
     }
 
     @Override
-    public abstract T map(ClusteringRaw raw, T toMake);
-
-    @Override
     public T take(String category, String detail) {
-        return null;
+        return map(getData(category, detail));
     }
 
 }

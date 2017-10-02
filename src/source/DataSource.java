@@ -1,5 +1,8 @@
 package source;
 
+import java.util.List;
+import java.util.Vector;
+
 /**
  * @author EuiJin.Ham
  * @version 1.0.0
@@ -34,4 +37,11 @@ public abstract class DataSource implements IDataSource{
         this.source.setLength(0);
         return this;
     }
+
+    public static List<String> mergeAsList(List<DataSource> dataSources){
+        List<String> list = new Vector<>();
+        for(DataSource s : dataSources) list.add(s.take());
+        return list;
+    }
+
 }

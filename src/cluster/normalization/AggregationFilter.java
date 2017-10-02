@@ -11,7 +11,7 @@ import java.util.*;
  * @version 1.0.0
  * @description A Filter utility class for normalizing a sentence
  */
-public class AggregationFilter extends HashSet<String>{
+public class AggregationFilter {
 
     /**
      * Original Text

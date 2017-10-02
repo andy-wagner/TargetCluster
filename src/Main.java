@@ -46,7 +46,7 @@ public class Main {
          */
         Cluster<SimpleClusterData> clusterKorea = new SimpleCluster<SimpleClusterData>(target, dataSourceKorea) {
             @Override
-            public SimpleClusterData map(ClusteringRaw raw, SimpleClusterData toMake) {
+            public SimpleClusterData map(ClusteringRaw raw) {
                 return new SimpleClusterData(raw);
             }
         };
@@ -56,12 +56,12 @@ public class Main {
          */
         Cluster<SimpleClusterData> clusterJapan = new SimpleCluster<SimpleClusterData>(target, dataSourceJapan) {
             @Override
-            public SimpleClusterData map(ClusteringRaw raw, SimpleClusterData toMake) {
+            public SimpleClusterData map(ClusteringRaw raw) {
                 return new SimpleClusterData(raw);
             }
         };
 
-        // TODO implements SimpleClusterData, ClusteringRaw, SimpleCluster and aggregationFilter
+
 
     }
 

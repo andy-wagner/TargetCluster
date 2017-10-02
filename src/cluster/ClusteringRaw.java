@@ -1,5 +1,7 @@
 package cluster;
 
+import java.util.Map;
+
 /**
  * @author EuiJin.Ham
  * @version 1.0.0
@@ -7,6 +9,15 @@ package cluster;
  */
 public class ClusteringRaw {
 
-    private int count;
+    private Map<String, Integer> counter;
 
+    public ClusteringRaw(){}
+
+    public Map<String, Integer> getCounter() {
+        return counter;
+    }
+
+    public void setCounter(Map<String, Integer> counter) {
+        this.counter = counter;
+    }
 }

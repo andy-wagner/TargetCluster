@@ -2,6 +2,9 @@ package cluster.model;
 
 import cluster.ClusteringRaw;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author EuiJin.Ham
  * @version 1.0.0
@@ -9,10 +12,13 @@ import cluster.ClusteringRaw;
  */
 public class SimpleClusterData {
 
+    private Map<String, Integer> count;
+
     /**
      * Default Constructor
      */
     public SimpleClusterData(){
+        count = new HashMap<>();
     }
 
     /**
@@ -20,7 +26,8 @@ public class SimpleClusterData {
      * @param raw Clustered raw data
      */
     public SimpleClusterData(ClusteringRaw raw){
-
+        this.count = new HashMap<>();
+        this.count.putAll(raw.getCounter());
     }
 
 }
