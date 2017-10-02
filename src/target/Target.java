@@ -1,5 +1,7 @@
 package target;
 
+import org.ahocorasick.trie.Trie;
+
 import java.io.Serializable;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -102,9 +104,13 @@ public class Target implements Serializable{
             targetConfig.setCategory(new HashMap<>());
             targetConfig.setSynonym(new HashMap<>());
             targetConfig.setKeywords(new HashSet<>());
-            targetConfig.setCaseSensitive(true);
+            targetConfig.setCaseSensitive(false);
             targetConfig.setDebug(false);
         } // ADefault Constructor
+
+        private static String flushSpaces(String str){
+            return str.replaceAll(" ", "");
+        }
 
         /**
          * A method for adding a category
@@ -112,7 +118,7 @@ public class Target implements Serializable{
          * @return builder instance
          */
         public TargetBuilder addCategory(String name){
-            if(!this.targetConfig.getCategory().containsKey(name)) this.targetConfig.getCategory().put(name, newDetailSet());
+            if(!this.targetConfig.getCategory().containsKey(flushSpaces(name))) this.targetConfig.getCategory().put(flushSpaces(name), newDetailSet());
             else{
                 if(targetConfig.isDebug()) System.err.println("[TargetIBuilder] Tried to put the category already existing. [" + name + "].");
             }
@@ -146,13 +152,13 @@ public class Target implements Serializable{
          * @return builder instance
          */
         public TargetBuilder addDetail(String toCategory, String detail){
-            if(this.targetConfig.getCategory().containsKey(toCategory)) {
-                this.targetConfig.getCategory().get(toCategory).add(detail);
+            if(this.targetConfig.getCategory().containsKey(flushSpaces(toCategory))) {
+                this.targetConfig.getCategory().get(flushSpaces(toCategory)).add(flushSpaces(detail));
             }else{
                 if(targetConfig.isDebug()) System.err.println("[TargetBuilder] Tried to put the detail on the category not existing. Automatically putting the category named [" + toCategory + "].");
                 Set<String> tempSet = newDetailSet();
-                tempSet.add(detail);
-                this.targetConfig.getCategory().put(toCategory, tempSet);
+                tempSet.add(flushSpaces(detail));
+                this.targetConfig.getCategory().put(flushSpaces(toCategory), tempSet);
             }
             return this;
         }
@@ -196,21 +202,17 @@ public class Target implements Serializable{
          * @return builder instance
          */
         public TargetBuilder addSynonym(String original, String domain){
-            if(!targetConfig.getCategory().containsKey(original)){
-                if(this.targetConfig.isDebug()) System.err.println("[TargetBuilder] Tried to put synonym for the word not existing in the category set[" + original + "]. Ignoring this operation.");
-                return this;
-            }
-            if(targetConfig.getCategory().containsKey(domain)){
+            if(this.targetConfig.getSynonym().containsKey(flushSpaces(original)) && this.targetConfig.getSynonym().get(flushSpaces(original)).equals(flushSpaces(domain))){
                 if(this.targetConfig.isDebug()) System.err.println("[TargetBuilder] Tried to put synonym which is existing in domain category set[" + domain + "]. Ignoring this operation since the operation can occur recursive error.");
                 return this;
             }
-            if(targetConfig.isDebug()){
-                if(this.targetConfig.getSynonym().containsKey(domain)){
-                    String origin = this.targetConfig.getSynonym().get(domain);
-                    System.err.println("[TargetBuilder] Tried to put the synonym already existing. [" + domain + "]. Original word[" + origin + "] will be overwritten with word[" + original + "].");
+            if(this.targetConfig.getSynonym().containsKey(flushSpaces(domain))){
+                if(this.targetConfig.isDebug()){
+                    System.err.println("[TargetBuilder] Tried to put the synonym already existing. [" + domain + "]. Ignoring this operation since the overwriting operation may occur recursive error.");
                 }
+                return this;
             }
-            this.targetConfig.getSynonym().put(domain, original);
+            this.targetConfig.getSynonym().put(flushSpaces(domain), flushSpaces(original));
             return this;
         }
 
@@ -245,11 +247,11 @@ public class Target implements Serializable{
          */
         public TargetBuilder addKeyword(String keyword){
             if(this.targetConfig.isDebug()){
-                if(this.targetConfig.getKeywords().contains(keyword)){
+                if(this.targetConfig.getKeywords().contains(flushSpaces(keyword))){
                     System.err.println("[TargetBuilder] Tried to put the keyword already existing. [" + keyword + "].");
                 }
             }
-            this.targetConfig.getKeywords().add(keyword);
+            this.targetConfig.getKeywords().add(flushSpaces(keyword));
             return this;
         }
 
@@ -259,14 +261,9 @@ public class Target implements Serializable{
          * @return builder instance
          */
         public TargetBuilder addKeywords(Collection<String> keywords){
-            if(this.targetConfig.isDebug()){
-                for(String s : keywords) {
-                    if (this.targetConfig.getKeywords().contains(s)) {
-                        System.err.println("[TargetBuilder] Tried to put the keyword already existing. [" + s + "].");
-                    }
-                }
+            for(String s : keywords) {
+                addKeyword(s);
             }
-            this.targetConfig.getKeywords().addAll(keywords);
             return this;
         }
 
@@ -338,24 +335,38 @@ public class Target implements Serializable{
             return this.targetConfig.getCategory();
         }
 
-        public void setCategory(Map<String, Set<String>> category) {
-            this.setCategory(category);
+        @Deprecated
+        public TargetBuilder setCategory(Map<String, Set<String>> category) {
+            this.targetConfig.setCategory(category);
+            return this;
         }
 
-        public void setKeywords(Set<String> keywords) {
-            this.targetConfig.setKeywords(keywords);
+        public TargetBuilder setKeywords(Set<String> keywords) {
+            addKeywords(keywords);
+            return this;
         }
 
         public boolean isCaseSensitive() {
             return this.targetConfig.isCaseSensitive();
         }
 
-        public void setCaseSensitive(boolean caseSensitive) {
+        public TargetBuilder setCaseSensitive(boolean caseSensitive) {
             this.targetConfig.setCaseSensitive(caseSensitive);
+            return this;
         }
 
         public boolean isDebug() {
             return targetConfig.isDebug();
+        }
+
+        @Deprecated
+        public TargetBuilder setSynonym(Map<String, String> synonyms){
+            Iterator<String> iterator = synonyms.keySet().iterator();
+            while(iterator.hasNext()){
+                final String key = iterator.next();
+                addSynonym(synonyms.get(key), key);
+            }
+            return this;
         }
 
     }
