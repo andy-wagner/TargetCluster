@@ -2,22 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="560b4fb7-5357-4d74-9354-90db020f86f2" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/org_jsoup_jsoup_1_10_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/cluster/Cluster.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/cluster/ClusteringRaw.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/cluster/ICluster.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/cluster/SimpleCluster.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/cluster/model/SimpleClusterData.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/cluster/normalization/AggregationFilter.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/source/BasicWebDataSource.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/source/SimpleDataSource.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/source/WebDataSource.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TargetCluster/Main.class" afterPath="$PROJECT_DIR$/out/production/TargetCluster/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/TargetCluster.iml" afterPath="$PROJECT_DIR$/TargetCluster.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/source/DataSource.java" afterPath="$PROJECT_DIR$/src/source/DataSource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/source/IDataSource.java" afterPath="$PROJECT_DIR$/src/source/IDataSource.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,11 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
-              <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+            <state relative-caret-position="456">
+              <caret line="41" column="58" lean-forward="true" selection-start-line="41" selection-start-column="58" selection-end-line="41" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1452#1471#0" expanded="true" />
@@ -53,6 +39,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="372">
+                <caret line="71" column="12" lean-forward="true" selection-start-line="71" selection-start-column="12" selection-end-line="71" selection-end-column="12" />
+                <folding>
+                  <marker date="1506923988482" expanded="true" signature="437:508" ph="/.../" />
+                </folding>
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="SimpleClusterData.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cluster/model/SimpleClusterData.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -68,16 +69,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="432">
               <caret line="26" column="29" lean-forward="true" selection-start-line="26" selection-start-column="29" selection-end-line="26" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ICluster.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/cluster/ICluster.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -203,7 +194,6 @@
         <option value="$PROJECT_DIR$/src/storage/IAgent.java" />
         <option value="$PROJECT_DIR$/src/target/Target.java" />
         <option value="$PROJECT_DIR$/src/target/TargetConfig.java" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/source/IDataSource.java" />
         <option value="$PROJECT_DIR$/src/source/WebDataSource.java" />
         <option value="$PROJECT_DIR$/src/source/BasicWebDataSource.java" />
@@ -216,6 +206,7 @@
         <option value="$PROJECT_DIR$/src/cluster/Cluster.java" />
         <option value="$PROJECT_DIR$/src/cluster/ClusteringRaw.java" />
         <option value="$PROJECT_DIR$/src/cluster/SimpleCluster.java" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -385,7 +376,7 @@
       <option name="presentableId" value="Default" />
       <updated>1506871948816</updated>
       <workItem from="1506871953466" duration="12661000" />
-      <workItem from="1506919052548" duration="4583000" />
+      <workItem from="1506919052548" duration="4918000" />
     </task>
     <task id="LOCAL-00001" summary="A Data Source Package and Storage Package added">
       <created>1506880409702</created>
@@ -436,11 +427,18 @@
       <option name="project" value="LOCAL" />
       <updated>1506884554414</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Cluster class elaborated and Simple DataSource added">
+      <created>1506923707972</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1506923707972</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17244000" />
+    <option name="totallyTimeSpent" value="17579000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -458,7 +456,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12447917" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12447917" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -488,7 +486,8 @@
     <MESSAGE value="Synonym logical error handled and readme modified" />
     <MESSAGE value="Readme indentation fixed" />
     <MESSAGE value="Readme fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Readme fixed" />
+    <MESSAGE value="Cluster class elaborated and Simple DataSource added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cluster class elaborated and Simple DataSource added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -597,7 +596,9 @@
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="912">
             <caret line="48" column="3" lean-forward="false" selection-start-line="48" selection-start-column="3" selection-end-line="48" selection-end-column="3" />
-            <folding />
+            <folding>
+              <marker date="1506923988482" expanded="true" signature="437:508" ph="/.../" />
+            </folding>
           </first_editor>
           <second_editor />
         </state>
@@ -648,17 +649,6 @@
             <element signature="e#1918#1919#0" expanded="true" />
             <element signature="e#1952#1953#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="133">
-            <caret line="7" column="8" lean-forward="false" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
-            <folding />
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>
@@ -781,13 +771,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="62" column="0" lean-forward="true" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+        <state relative-caret-position="456">
+          <caret line="41" column="58" lean-forward="true" selection-start-line="41" selection-start-column="58" selection-end-line="41" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1452#1471#0" expanded="true" />
             <element signature="e#1828#1847#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="372">
+            <caret line="71" column="12" lean-forward="true" selection-start-line="71" selection-start-column="12" selection-end-line="71" selection-end-column="12" />
+            <folding>
+              <marker date="1506923988482" expanded="true" signature="437:508" ph="/.../" />
+            </folding>
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>

@@ -16,38 +16,65 @@
 
 
 
-> Example for TargetBuilder
+> Example Code Snippet
 
 ```java
-public static void main(String... args) {
+    /**
+     * main method
+     * @param args running configuration
+     */
+    public static void main(String... args) {
 
+        /**
+         * Building a target instance
+         */
         Target target = Target.builder()
                 .debug()
-                .addCategories("Seoul", "Tokyo").addKeywords("Food")
-                .addDetail("Seoul", "Tour")
-                .addDetails("Tokyo", "Tour", "Ramen")
-                .addKeywords("Keyword", "Keyword2", "Keyw3ord", "Keyword1")
+                .addCategories("Korea", "Japan")
+                .addDetails("Korea", "seoul", "pusan")
+                .addDetails("Japan", "tokyo", "sapporo")
+                .addKeywords("suicide", "mistake", "crash")
                 .addSynonym("Seoul", "Seoul-Si")
-                .addSynonyms("Seoul", "Tokyo", "seoul-si") // Tokyo - Error(Existing in category)
+                .addSynonyms("Pusan", "busan", "Busan-si") // Tokyo - Error(Existing in category)
                 .build();
 
-        // Tried to put synonym which is existing in domain category set[Tokyo]. 
-        // Ignoring this operation since the operation can occur recursive error.
+        /**
+         * DataSources
+         */
+        DataSource dataSourceKorea = new SimpleDataSource("Some people make a mistake everyday in seoul, Korea.");
+        DataSource dataSourceJapan = new SimpleDataSource("Some people suicide everyday in Japan.");
 
-        // Target{
-        // targetConfig=TargetConfig{
-        // category={Seoul=[[NOT_CLASSIFIED], Tour], Tokyo=[Ramen, [NOT_CLASSIFIED], Tour]},
-        // synonym={seoul-si=Seoul, Seoul-Si=Seoul},
-        // keywords=[Keyword2, Keyword1, Keyword, Keyw3ord, Food],
-        // caseSensitive=true,
-        // debug=true}
-        // }
-        
+        /**
+         * A Cluster Instance for Korea DataSource
+         */
+        Cluster<SimpleClusterData> clusterKorea = new SimpleCluster<SimpleClusterData>(target, dataSourceKorea) {
+            @Override
+            public SimpleClusterData map(ClusteringRaw raw, SimpleClusterData toMake) {
+                return new SimpleClusterData(raw);
+            }
+        };
+
+        /**
+         * A Cluster Instance for Japan DataSource
+         */
+        Cluster<SimpleClusterData> clusterJapan = new SimpleCluster<SimpleClusterData>(target, dataSourceJapan) {
+            @Override
+            public SimpleClusterData map(ClusteringRaw raw, SimpleClusterData toMake) {
+                return new SimpleClusterData(raw);
+            }
+        };
+
+        // TODO implements SimpleClusterData, ClusteringRaw, SimpleCluster and aggregationFilter
+
     }
 ```
 
 ### Licenses
 
-![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 - Aho CoraSick Algorithm For Efficient String Matching [0.4.0]
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+- Jsoup Java HTML Parser [1.10.3]
