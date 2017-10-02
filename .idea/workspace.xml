@@ -4,7 +4,6 @@
     <list default="true" id="560b4fb7-5357-4d74-9354-90db020f86f2" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cluster/SimpleCluster.java" afterPath="$PROJECT_DIR$/src/cluster/SimpleCluster.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -94,7 +93,7 @@
       <file leaf-file-name="SimpleCluster.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/cluster/SimpleCluster.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
+            <state relative-caret-position="-171">
               <caret line="14" column="36" lean-forward="true" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -105,21 +104,6 @@
                 <element signature="e#1226#1227#0" expanded="true" />
                 <element signature="e#1279#1280#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="524">
-                <caret line="94" column="0" lean-forward="true" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
-                <folding>
-                  <marker date="1506963302924" expanded="true" signature="799:870" ph="/.../" />
-                </folding>
-              </first_editor>
-              <second_editor />
             </state>
           </provider>
         </entry>
@@ -415,7 +399,7 @@
       <updated>1506871948816</updated>
       <workItem from="1506871953466" duration="12661000" />
       <workItem from="1506919052548" duration="5090000" />
-      <workItem from="1506953775286" duration="8527000" />
+      <workItem from="1506953775286" duration="9244000" />
     </task>
     <task id="LOCAL-00001" summary="A Data Source Package and Storage Package added">
       <created>1506880409702</created>
@@ -494,11 +478,18 @@
       <option name="project" value="LOCAL" />
       <updated>1506962549322</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Readme modified">
+      <created>1506963326413</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1506963326413</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26278000" />
+    <option name="totallyTimeSpent" value="26995000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -547,10 +538,10 @@
     <MESSAGE value="Readme indentation fixed" />
     <MESSAGE value="Readme fixed" />
     <MESSAGE value="Cluster class elaborated and Simple DataSource added" />
-    <MESSAGE value="Readme modified" />
     <MESSAGE value="Filter elaborated" />
     <MESSAGE value="Cluster Utility method added and simple raw data established" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cluster Utility method added and simple raw data established" />
+    <MESSAGE value="Readme modified" />
+    <option name="LAST_COMMIT_MESSAGE" value="Readme modified" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -780,7 +771,7 @@
           <first_editor relative-caret-position="912">
             <caret line="48" column="3" lean-forward="false" selection-start-line="48" selection-start-column="3" selection-end-line="48" selection-end-column="3" />
             <folding>
-              <marker date="1506963302924" expanded="true" signature="799:870" ph="/.../" />
+              <marker date="1506964019545" expanded="true" signature="1455:1526" ph="/.../" />
             </folding>
           </first_editor>
           <second_editor />
@@ -969,10 +960,10 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="524">
-            <caret line="94" column="0" lean-forward="true" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+          <first_editor relative-caret-position="171">
+            <caret line="9" column="11" lean-forward="true" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
             <folding>
-              <marker date="1506963302924" expanded="true" signature="799:870" ph="/.../" />
+              <marker date="1506964019545" expanded="true" signature="1455:1526" ph="/.../" />
             </folding>
           </first_editor>
           <second_editor />
@@ -981,7 +972,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cluster/SimpleCluster.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
+        <state relative-caret-position="-171">
           <caret line="14" column="36" lean-forward="true" selection-start-line="14" selection-start-column="36" selection-end-line="14" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />

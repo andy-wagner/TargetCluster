@@ -3,16 +3,26 @@
 #### A Clustering Utilities for collecting text-based statistic data with a intuitive builder.
 #### 직관적인 빌더를 이용하여 문자열 기반 통계자료를 수집하는 군집화 유틸리티
 
-- Categorized Clustering Utility
-- Synonym Recursive Filter
-- Abstract Data Source
-- Intuitive Category Builder
-- Basic Web Data Source Utility
+## Overview
+
+- Categorized Clustering Utility : This utility classifies the significant data with targeted categories. (Thread-Safe)
+- Synonym Recursive Filter : This filter provides a function that eliminates the synonymously duplicate words.
+- Abstract Data Source : This is provided for supporting various data sources.
+- Intuitive Category Builder : This builder makes building category structure intuitive and easy. (Thread-Safe)
+- Basic Web Data Source Utility : This utility provides the function to load data from web. (Note. Runs Synchronously.)
 
 ## Packages
 > cluster
 - A Package for implementing analyzing and clustering logics.
 - 분석 및 군집화 로직을 구현한 패키지
+
+> cluster.model
+- A Package for including classes which is capsulating clustered data
+- 군집화 데이터를 캡슐화하는 클래스 집합 패키지
+
+> normalization
+- A Package for normalizing text-based data with filter above.
+- 위 언급된 필터를 이용하여 문자열을 정규화하기 위한 유틸리티 패키지
 
 > source
 - A Package for designing various data sources
@@ -28,7 +38,7 @@
 
 ## Snippets
 
-> Example Code Snippet
+> Example Code Snippet [예시 및 코드]
 
 ```java
     /**
