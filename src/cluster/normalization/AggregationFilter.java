@@ -28,7 +28,7 @@ public class AggregationFilter {
      * @param target Target Instance
      * @throws InfiniteRecurrenceException Refer the class
      */
-    public AggregationFilter(String origin, Target target) throws InfiniteRecurrenceException{
+    public AggregationFilter(String origin, Target target){
         this.origin = origin;
         this.target = target;
     }
