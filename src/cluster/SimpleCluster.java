@@ -14,10 +14,20 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public abstract class SimpleCluster<T> extends Cluster<T> {
 
+    /**
+     * Constructor with multi-dataSource
+     * @param target target Configuration
+     * @param dataSources multi-dataSource
+     */
     public SimpleCluster(Target target, List<DataSource> dataSources){
         super(target, dataSources);
     }
 
+    /**
+     * Constructor with a dataSource
+     * @param target target Configuration
+     * @param dataSource dataSource
+     */
     public SimpleCluster(Target target, DataSource dataSource){
         super(target, dataSource);
     }
