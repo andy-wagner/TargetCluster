@@ -13,7 +13,7 @@ public interface IDataSource {
      * Collects the data cumulatively until the method named take called
      * @return The result of collecting job
      */
-    boolean collect() throws IOException;
+    DataSource collect() throws IOException;
 
     /**
      * Returns the Collected data
@@ -25,6 +25,6 @@ public interface IDataSource {
      * Flushes the collected data variable and resets the data input source
      * @return
      */
-    void flush() throws NullPointerException;
+    DataSource flush() throws NullPointerException;
 
 }
