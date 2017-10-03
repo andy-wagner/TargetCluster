@@ -22,6 +22,10 @@ public class AggregationFilter {
      * Target Instance
      */
     private Target target;
+    /**
+     * Debug Mode Flag
+     */
+    private boolean debug;
 
     /**
      * Only This constructor must be used
@@ -41,14 +45,27 @@ public class AggregationFilter {
     private Set<String> extractKeywords(){
         Set<String> set = new HashSet<>();
 
-        Trie.TrieBuilder trieBuilder = Trie.builder().addKeywords(this.target.getKeywords());
+        Trie.TrieBuilder trieBuilder = Trie.builder()
+                .addKeywords(this.target.getKeywords())
+                .addKeywords(this.target.getCategory().keySet());
         if(!this.target.isCaseSensitive()){
             trieBuilder.ignoreCase();
+        }
+
+        final Iterator<String> iterator = this.target.getCategory().keySet().iterator();
+
+        while(iterator.hasNext()){
+            final String key = iterator.next();
+            trieBuilder.addKeywords(this.target.getCategory().get(key));
         }
 
         Collection<Emit> emits = trieBuilder.build().parseText(this.origin);
         for(Emit e : emits){
             set.add(e.getKeyword());
+        }
+
+        if(isDebug()){
+            System.err.println("[AggregationFilter] Extracing Done. => " + set);
         }
 
         return set;
@@ -121,4 +138,11 @@ public class AggregationFilter {
         return this.filterSynonyms(extracted);
     }
 
+    public boolean isDebug() {
+        return debug;
+    }
+
+    public void setDebug(boolean debug) {
+        this.debug = debug;
+    }
 }

@@ -197,10 +197,31 @@ public abstract class Cluster<T> implements ICluster<T>{
      * @return FlagState
      */
     public FlagState decideWhatItIs(String str, String hintCategory){
-        if(isStringExistingInCategories(str)) return FlagState.CATEGORY;
-        if(isStringExistingInKeywords(str)) return FlagState.KEYWORD;
+        if(isDebug()){
+            System.err.println(String.format("[Cluster] decideWhatItIs called [%s, %s]", str, hintCategory));
+        }
+        if(isStringExistingInCategories(str)) {
+            if(isDebug()){
+                System.err.println("[Cluster] decideWhatItIs [FlagState.CATEGORY]");
+            }
+            return FlagState.CATEGORY;
+        }
+        if(isStringExistingInKeywords(str)) {
+            if(isDebug()){
+                System.err.println("[Cluster] decideWhatItIs [FlagState.KEYWORD]");
+            }
+            return FlagState.KEYWORD;
+        }
         if(hintCategory != null){
-            if(isStringExistingAsDetail(hintCategory, str)) return FlagState.DETAIL;
+            if(isStringExistingAsDetail(hintCategory, str)) {
+                if(isDebug()){
+                    System.err.println("[Cluster] decideWhatItIs [FlagState.DETAIL]");
+                }
+                return FlagState.DETAIL;
+            }
+        }
+        if(isDebug()){
+            System.err.println("[Cluster] decideWhatItIs [FlagState.NOTHING]");
         }
         return FlagState.NOTHING;
     }

@@ -48,11 +48,20 @@ public abstract class SimpleCluster<T> extends Cluster<T> {
 
         for(String datum : mergedList){
             final AggregationFilter aggregationFilter = new AggregationFilter(datum, this.target);
+            aggregationFilter.setDebug(isDebug());
+            if(isDebug()){
+                System.err.println(String.format("[SimpleCluster] AggregationFilter Constructed => [%s] : ", datum) + this.target);
+            }
             Set<String> normalized;
             try {
                 normalized = aggregationFilter.normalize();
             }catch (InfiniteRecurrenceException e){
+                e.printStackTrace();
                 normalized = new HashSet<>();
+            }
+
+            if(isDebug()){
+                System.err.println("[SimpleCluster] Normalizing Done. => " + normalized);
             }
 
             final Iterator<String> iterator = normalized.iterator();
