@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="560b4fb7-5357-4d74-9354-90db020f86f2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/TargetCluster/Main.class" afterPath="$PROJECT_DIR$/out/production/TargetCluster/Main.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cluster/Cluster.java" afterPath="$PROJECT_DIR$/src/cluster/Cluster.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cluster/SimpleCluster.java" afterPath="$PROJECT_DIR$/src/cluster/SimpleCluster.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cluster/normalization/AggregationFilter.java" afterPath="$PROJECT_DIR$/src/cluster/normalization/AggregationFilter.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,8 +18,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1501">
-              <caret line="81" column="1" lean-forward="true" selection-start-line="81" selection-start-column="1" selection-end-line="81" selection-end-column="1" />
+            <state relative-caret-position="266">
+              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1989#1990#0" expanded="true" />
@@ -38,11 +33,11 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="352">
-                <caret line="70" column="16" lean-forward="false" selection-start-line="70" selection-start-column="16" selection-end-line="70" selection-end-column="16" />
+              <first_editor relative-caret-position="67">
+                <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
                 <folding>
-                  <marker date="1507062308695" expanded="true" signature="1456:1469" ph="/.../" />
-                  <marker date="1507062308695" expanded="true" signature="1456:1539" ph="/.../" />
+                  <marker date="1507062826443" expanded="true" signature="2095:2108" ph="/.../" />
+                  <marker date="1507062826443" expanded="true" signature="2095:2178" ph="/.../" />
                 </folding>
               </first_editor>
               <second_editor />
@@ -468,7 +463,7 @@
       <workItem from="1506871953466" duration="12661000" />
       <workItem from="1506919052548" duration="5090000" />
       <workItem from="1506953775286" duration="9998000" />
-      <workItem from="1507049355530" duration="12798000" />
+      <workItem from="1507049355530" duration="13327000" />
     </task>
     <task id="LOCAL-00001" summary="A Data Source Package and Storage Package added">
       <created>1506880409702</created>
@@ -596,11 +591,18 @@
       <option name="project" value="LOCAL" />
       <updated>1507059823723</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="SimpleCluster finished">
+      <created>1507062341182</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1507062341182</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40547000" />
+    <option name="totallyTimeSpent" value="41076000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -658,7 +660,8 @@
     <MESSAGE value="README and example modified [Logical error not fixed yet]" />
     <MESSAGE value="Debug Mode added on filter and cluster &amp; logical bug partially fixed" />
     <MESSAGE value="Thread Name added in logging" />
-    <option name="LAST_COMMIT_MESSAGE" value="Thread Name added in logging" />
+    <MESSAGE value="SimpleCluster finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="SimpleCluster finished" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -1035,8 +1038,8 @@
           <first_editor relative-caret-position="912">
             <caret line="48" column="3" lean-forward="false" selection-start-line="48" selection-start-column="3" selection-end-line="48" selection-end-column="3" />
             <folding>
-              <marker date="1507062308695" expanded="true" signature="1456:1469" ph="/.../" />
-              <marker date="1507062308695" expanded="true" signature="1456:1539" ph="/.../" />
+              <marker date="1507062826443" expanded="true" signature="2095:2108" ph="/.../" />
+              <marker date="1507062826443" expanded="true" signature="2095:2178" ph="/.../" />
             </folding>
           </first_editor>
           <second_editor />
@@ -1259,11 +1262,11 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="352">
-            <caret line="70" column="16" lean-forward="false" selection-start-line="70" selection-start-column="16" selection-end-line="70" selection-end-column="16" />
+          <first_editor relative-caret-position="67">
+            <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
             <folding>
-              <marker date="1507062308695" expanded="true" signature="1456:1469" ph="/.../" />
-              <marker date="1507062308695" expanded="true" signature="1456:1539" ph="/.../" />
+              <marker date="1507062826443" expanded="true" signature="2095:2108" ph="/.../" />
+              <marker date="1507062826443" expanded="true" signature="2095:2178" ph="/.../" />
             </folding>
           </first_editor>
           <second_editor />
@@ -1272,8 +1275,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1501">
-          <caret line="81" column="1" lean-forward="true" selection-start-line="81" selection-start-column="1" selection-end-line="81" selection-end-column="1" />
+        <state relative-caret-position="266">
+          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1989#1990#0" expanded="true" />

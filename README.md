@@ -36,7 +36,19 @@
 - An explicit limitation of data for analysis and collecting
 - 분석 혹은 군집화 대상의 카테고리를 정의하기 위한 패키지
 
-## Snippets
+## Details and Terms
+
+#### Details
+- This utilities provide the library as a tool that clusters the frequency of targeted data for corresponding hierarchical categories.
+- 본 유틸리티는 계층적인 카테고리에 대해 관심 데이터의 빈도를 데이터소스별로 군집화할 수 있는 도구를 제공합니다.
+
+#### Terms
+- Category : An wide concept of classifying e.g) Seoul, Korea => Korea, Tokyo, Japan => Japan
+- Detail : A Children of a Categories e.g) Seoul, Korea / Incheon, Korea => Seoul, Incheon
+- Synonym : A Synonymous terms which have to be considered as same meaning e.g) Seoul-Si = Seoul, Korea = Corea
+- Keyword : A Keyword to find and cluster e.g) Refer the example code on the main method
+
+## Code Snippets
 
 > Example Code Snippet [예시 및 코드]
 
