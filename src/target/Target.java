@@ -108,7 +108,7 @@ public class Target implements Serializable{
             targetConfig.setDebug(false);
         } // ADefault Constructor
 
-        private static String flushSpaces(String str){
+        public static String flushSpaces(String str){
             return str.replaceAll(" ", "");
         }
 

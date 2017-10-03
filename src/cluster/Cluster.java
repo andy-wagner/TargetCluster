@@ -1,5 +1,6 @@
 package cluster;
 
+import cluster.constants.FlagState;
 import source.DataSource;
 import target.Target;
 
@@ -23,6 +24,10 @@ public abstract class Cluster<T> implements ICluster<T>{
      * DataSource instance
      */
     protected List<DataSource> dataSources;
+    /**
+     * Debug Mode Flag
+     */
+    private boolean debug = false;
 
     /**
      * Default Constructor
@@ -51,20 +56,44 @@ public abstract class Cluster<T> implements ICluster<T>{
         this.dataSources.add(dataSource);
     }
 
-    protected static String generateCategoryKey(String category, String detail){
-        return String.format("%s-[CLUSTER_KEY]-$s", category, detail);
+    protected static String generateCategoryKey(String category, String detail, String keyword){
+        return String.format("%s-[CLUSTER_KEY]-$s-%s", category, detail, keyword);
     }
 
     public Iterator<String> iteratorForData(){
         return this.clusteringRawMap.keySet().iterator();
     }
 
-    public ClusteringRaw putData(String category, String detail, ClusteringRaw raw){
-        return this.clusteringRawMap.put(generateCategoryKey(category, detail), raw);
+    /**
+     * A method to put the clustered result with category and detail category name
+     * @param category Category name
+     * @param detail Detail Category name
+     * @return put Data
+     */
+    public ClusteringRaw putData(String category, String detail, String keyword){
+        final String key = generateCategoryKey(category, detail, keyword);
+        if(this.clusteringRawMap.containsKey(key)){
+            final ClusteringRaw existing = this.clusteringRawMap.get(key);
+            int count = existing.getCount();
+            existing.setCount(count + 1);
+            return existing;
+        }else{
+            ClusteringRaw clusteringRaw = new ClusteringRaw();
+            clusteringRaw.setCategory(category);
+            clusteringRaw.setDetailCategory(detail);
+            clusteringRaw.setKeyword(keyword);
+            return this.clusteringRawMap.put(key, clusteringRaw);
+        }
     }
 
-    public ClusteringRaw getData(String category, String detail){
-        return this.clusteringRawMap.get(generateCategoryKey(category, detail));
+    /**
+     * A method to take a single data unit from clustered data (Functionally Duplicate with take(String, String))
+     * @param category Category Name
+     * @param detail Detail Category Name
+     * @return Clustered data
+     */
+    public ClusteringRaw getData(String category, String detail, String keyword) throws NullPointerException{
+        return this.clusteringRawMap.get(generateCategoryKey(category, detail, keyword));
     }
 
     public Target getTarget() {
@@ -83,4 +112,104 @@ public abstract class Cluster<T> implements ICluster<T>{
         this.dataSources = dataSources;
     }
 
+    @Override
+    public List<T> takeAll(){
+        List<T> toRet = new Vector<>();
+        Iterator<String> iterator = clusteringRawMap.keySet().iterator();
+        while(iterator.hasNext()){
+            toRet.add(map(clusteringRawMap.get(iterator.next())));
+        }
+        return toRet;
+    }
+
+    @Override
+    public List<ClusteringRaw> asList(){
+        List<ClusteringRaw> toRet = new Vector<>();
+        Iterator<String> iterator = clusteringRawMap.keySet().iterator();
+        while(iterator.hasNext()){
+            toRet.add(clusteringRawMap.get(iterator.next()));
+        }
+        return toRet;
+    }
+
+    /**
+     * A method to check if the keyword in parameter is existing in the keyword set
+     * @param str The Keyword to check
+     * @return A Result of the checking process
+     */
+    public boolean isStringExistingInKeywords(String str){
+        return this.target.getKeywords().contains(str);
+    }
+
+    /**
+     * A method to check if the keyword in parameter is existing in the category set
+     * @param str The Keyword to check
+     * @return A Result of the checking process
+     */
+    public boolean isStringExistingInCategories(String str){
+        return this.target.getCategory().keySet().contains(str);
+    }
+
+    /**
+     * A method to check if the detailed name in parameter is existing in the detail category set
+     * @param category Category Name
+     * @param detail Detailed Category
+     * @return A Result of the checking process
+     * @throws NullPointerException
+     */
+    public boolean isStringExistingAsDetail(String category, String detail) throws NullPointerException{
+        final Set<String> ct = this.target.getCategory().get(category);
+        return ct.contains(detail);
+    }
+
+    /**
+     * A method to retrieve the category of string in parameter
+     * @param detail Detailed category
+     * @apiNote This method is using the linear method that it is highly inefficient
+     * @return Category Names (This value might be none)
+     */
+    public Set<String> getCategoryOfDetail(String detail){
+        final Map<String, Set<String>> map = this.target.getCategory();
+        final Iterator<String> keys = map.keySet().iterator();
+        final Set<String> categories = new HashSet<>();
+
+        while(keys.hasNext()){
+            final String key = keys.next();
+            final Set<String> currentSet = map.get(key);
+            final Iterator<String> cIterator = currentSet.iterator();
+            while(cIterator.hasNext()){
+                final String now = cIterator.next();
+                if(this.target.isCaseSensitive()){
+                    if(Target.TargetBuilder.flushSpaces(detail).equals(now)) categories.add(key);
+                }else{
+                    if(Target.TargetBuilder.flushSpaces(detail.toLowerCase()).equals(now.toLowerCase())) categories.add(key);
+                }
+            }
+        }
+
+        return categories;
+    }
+
+    /**
+     * A method to find the type of keyword in parameter
+     * @param str The keyword to find
+     * @param hintCategory The category name (This parameter must be null if category could not be found yet)
+     * @return FlagState
+     */
+    public FlagState decideWhatItIs(String str, String hintCategory){
+        if(isStringExistingInCategories(str)) return FlagState.CATEGORY;
+        if(isStringExistingInKeywords(str)) return FlagState.KEYWORD;
+        if(hintCategory != null){
+            if(isStringExistingAsDetail(hintCategory, str)) return FlagState.DETAIL;
+        }
+        return FlagState.NOTHING;
+    }
+
+    public boolean isDebug() {
+        return debug;
+    }
+
+    public void setDebug(boolean debug) {
+        this.debug = debug;
+    }
 }

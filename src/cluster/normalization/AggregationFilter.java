@@ -1,5 +1,6 @@
 package cluster.normalization;
 
+import cluster.normalization.exceptions.InfiniteRecurrenceException;
 import org.ahocorasick.trie.Emit;
 import org.ahocorasick.trie.Trie;
 import target.Target;

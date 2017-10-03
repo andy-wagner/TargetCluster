@@ -3,11 +3,8 @@ import cluster.ClusteringRaw;
 import cluster.SimpleCluster;
 import cluster.model.SimpleClusterData;
 import source.DataSource;
-import source.BasicWebDataSource;
 import source.SimpleDataSource;
 import target.Target;
-
-import java.io.IOException;
 
 /**
  * @author EuiJin.Ham
@@ -32,7 +29,7 @@ public class Main {
                 .addDetails("Japan", "tokyo", "sapporo")
                 .addKeywords("suicide", "mistake", "crash")
                 .addSynonym("Seoul", "Seoul-Si")
-                .addSynonyms("Pusan", "busan", "Busan-si") // Tokyo - Error(Existing in category)
+                .addSynonyms("Pusan", "busan", "Busan-si")
                 .build();
 
         /**
@@ -60,6 +57,18 @@ public class Main {
                 return new SimpleClusterData(raw);
             }
         };
+
+        /**
+         * Sets Debug Mode
+         */
+        clusterKorea.setDebug(true);
+        clusterJapan.setDebug(true);
+
+        /**
+         * Makes cluster structure
+         */
+        clusterKorea.make();
+        clusterJapan.make();
 
 
 

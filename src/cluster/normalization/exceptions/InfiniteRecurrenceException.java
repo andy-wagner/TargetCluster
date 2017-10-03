@@ -1,4 +1,4 @@
-package cluster.normalization;
+package cluster.normalization.exceptions;
 
 /**
  * @author EuiJin.Ham

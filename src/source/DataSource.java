@@ -15,7 +15,7 @@ public abstract class DataSource implements IDataSource{
     /**
      * The collected data
      */
-    protected StringBuffer source;
+    protected StringBuffer source = new StringBuffer();
 
     private String currentDelimiter = DELIMITER_DEFAULT;
 

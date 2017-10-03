@@ -2,9 +2,6 @@ package cluster.model;
 
 import cluster.ClusteringRaw;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * @author EuiJin.Ham
  * @version 1.0.0
@@ -12,13 +9,15 @@ import java.util.Map;
  */
 public class SimpleClusterData {
 
-    private Map<String, Integer> count;
+    private String category;
+    private String detailCategory;
+    private String keyword;
+    private int count = 0;
 
     /**
      * Default Constructor
      */
     public SimpleClusterData(){
-        count = new HashMap<>();
     }
 
     /**
@@ -26,8 +25,34 @@ public class SimpleClusterData {
      * @param raw Clustered raw data
      */
     public SimpleClusterData(ClusteringRaw raw){
-        this.count = new HashMap<>();
-        this.count.putAll(raw.getCounter());
+        this.category = raw.getCategory();
+        this.detailCategory = raw.getDetailCategory();
+        this.keyword = raw.getKeyword();
+        this.count = raw.getCount();
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getDetailCategory() {
+        return detailCategory;
+    }
+
+    public void setDetailCategory(String detailCategory) {
+        this.detailCategory = detailCategory;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
     }
 
 }
