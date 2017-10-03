@@ -65,7 +65,7 @@ public class AggregationFilter {
         }
 
         if(isDebug()){
-            System.err.println("[AggregationFilter] Extracing Done. => " + set);
+            System.err.println(Thread.currentThread().getName() + " - " + "[AggregationFilter] Extracing Done. => " + set);
         }
 
         return set;

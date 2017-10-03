@@ -198,30 +198,30 @@ public abstract class Cluster<T> implements ICluster<T>{
      */
     public FlagState decideWhatItIs(String str, String hintCategory){
         if(isDebug()){
-            System.err.println(String.format("[Cluster] decideWhatItIs called [%s, %s]", str, hintCategory));
+            System.err.println(Thread.currentThread().getName() + " - " + String.format("[Cluster] decideWhatItIs called [%s, %s]", str, hintCategory));
         }
         if(isStringExistingInCategories(str)) {
             if(isDebug()){
-                System.err.println("[Cluster] decideWhatItIs [FlagState.CATEGORY]");
+                System.err.println(Thread.currentThread().getName() + " - " + "[Cluster] decideWhatItIs [FlagState.CATEGORY]");
             }
             return FlagState.CATEGORY;
         }
         if(isStringExistingInKeywords(str)) {
             if(isDebug()){
-                System.err.println("[Cluster] decideWhatItIs [FlagState.KEYWORD]");
+                System.err.println(Thread.currentThread().getName() + " - " + "[Cluster] decideWhatItIs [FlagState.KEYWORD]");
             }
             return FlagState.KEYWORD;
         }
         if(hintCategory != null){
             if(isStringExistingAsDetail(hintCategory, str)) {
                 if(isDebug()){
-                    System.err.println("[Cluster] decideWhatItIs [FlagState.DETAIL]");
+                    System.err.println(Thread.currentThread().getName() + " - " + "[Cluster] decideWhatItIs [FlagState.DETAIL]");
                 }
                 return FlagState.DETAIL;
             }
         }
         if(isDebug()){
-            System.err.println("[Cluster] decideWhatItIs [FlagState.NOTHING]");
+            System.err.println(Thread.currentThread().getName() + " - " + "[Cluster] decideWhatItIs [FlagState.NOTHING]");
         }
         return FlagState.NOTHING;
     }

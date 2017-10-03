@@ -41,7 +41,7 @@ public abstract class SimpleCluster<T> extends Cluster<T> {
     @Override
     public void make() {
         if(isDebug()){
-            System.err.println("[SimpleCluster] make called.");
+            System.err.println(Thread.currentThread().getName() + " - " + "[SimpleCluster] make called.");
         }
         if(this.clusteringRawMap == null) this.clusteringRawMap = new ConcurrentHashMap<>();
         final List<String> mergedList = DataSource.mergeAsList(this.dataSources);
@@ -50,7 +50,7 @@ public abstract class SimpleCluster<T> extends Cluster<T> {
             final AggregationFilter aggregationFilter = new AggregationFilter(datum, this.target);
             aggregationFilter.setDebug(isDebug());
             if(isDebug()){
-                System.err.println(String.format("[SimpleCluster] AggregationFilter Constructed => [%s] : ", datum) + this.target);
+                System.err.println(Thread.currentThread().getName() + " - " + String.format("[SimpleCluster] AggregationFilter Constructed => [%s] : ", datum) + this.target);
             }
             Set<String> normalized;
             try {
@@ -61,7 +61,7 @@ public abstract class SimpleCluster<T> extends Cluster<T> {
             }
 
             if(isDebug()){
-                System.err.println("[SimpleCluster] Normalizing Done. => " + normalized);
+                System.err.println(Thread.currentThread().getName() + " - " + "[SimpleCluster] Normalizing Done. => " + normalized);
             }
 
             final Iterator<String> iterator = normalized.iterator();
@@ -80,7 +80,7 @@ public abstract class SimpleCluster<T> extends Cluster<T> {
                     final Set<String> found = super.getCategoryOfDetail(now);
                     if(found.size() > 0){
                         if(isDebug()){
-                            System.err.println("[SimpleCluster] keyword elected by getCategoryOfDetail => " + found);
+                            System.err.println(Thread.currentThread().getName() + " - " + "[SimpleCluster] keyword elected by getCategoryOfDetail => " + found);
                         }
                         detail = now;
                         /**
@@ -110,7 +110,7 @@ public abstract class SimpleCluster<T> extends Cluster<T> {
     @Override
     public T take(String category, String detail, String keyword) {
         if(isDebug()){
-            System.err.println(String.format("[SimpleCluster] take called. [%s, %s, %s]", category, detail, keyword));
+            System.err.println(Thread.currentThread().getName() + " - " + String.format("[SimpleCluster] take called. [%s, %s, %s]", category, detail, keyword));
         }
         try{
             T ret = map(getData(category, detail, keyword));

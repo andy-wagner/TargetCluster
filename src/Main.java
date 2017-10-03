@@ -71,10 +71,10 @@ public class Main {
         clusterJapan.make();
 
         /**
-         * Extracts Result
+         * Extracts Results
          */
-        System.out.println(clusterKorea.takeAll());
-        System.out.println(clusterJapan.takeAll());
+        System.out.println(Thread.currentThread().getName() + " - " + clusterKorea.takeAll());
+        System.out.println(Thread.currentThread().getName() + " - " + clusterJapan.takeAll());
 
     }
 

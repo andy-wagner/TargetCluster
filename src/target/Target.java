@@ -120,7 +120,7 @@ public class Target implements Serializable{
         public TargetBuilder addCategory(String name){
             if(!this.targetConfig.getCategory().containsKey(flushSpaces(name))) this.targetConfig.getCategory().put(flushSpaces(name), newDetailSet());
             else{
-                if(targetConfig.isDebug()) System.err.println("[TargetIBuilder] Tried to put the category already existing. [" + name + "].");
+                if(targetConfig.isDebug()) System.err.println(Thread.currentThread().getName() + " - " + "[TargetIBuilder] Tried to put the category already existing. [" + name + "].");
             }
             return this;
         }
@@ -155,7 +155,7 @@ public class Target implements Serializable{
             if(this.targetConfig.getCategory().containsKey(flushSpaces(toCategory))) {
                 this.targetConfig.getCategory().get(flushSpaces(toCategory)).add(flushSpaces(detail));
             }else{
-                if(targetConfig.isDebug()) System.err.println("[TargetBuilder] Tried to put the detail on the category not existing. Automatically putting the category named [" + toCategory + "].");
+                if(targetConfig.isDebug()) System.err.println(Thread.currentThread().getName() + " - " + "[TargetBuilder] Tried to put the detail on the category not existing. Automatically putting the category named [" + toCategory + "].");
                 Set<String> tempSet = newDetailSet();
                 tempSet.add(flushSpaces(detail));
                 this.targetConfig.getCategory().put(flushSpaces(toCategory), tempSet);
@@ -203,12 +203,12 @@ public class Target implements Serializable{
          */
         public TargetBuilder addSynonym(String original, String domain){
             if(this.targetConfig.getSynonym().containsKey(flushSpaces(original)) && this.targetConfig.getSynonym().get(flushSpaces(original)).equals(flushSpaces(domain))){
-                if(this.targetConfig.isDebug()) System.err.println("[TargetBuilder] Tried to put synonym which is existing in domain category set[" + domain + "]. Ignoring this operation since the operation can occur recursive error.");
+                if(this.targetConfig.isDebug()) System.err.println(Thread.currentThread().getName() + " - " + "[TargetBuilder] Tried to put synonym which is existing in domain category set[" + domain + "]. Ignoring this operation since the operation can occur recursive error.");
                 return this;
             }
             if(this.targetConfig.getSynonym().containsKey(flushSpaces(domain))){
                 if(this.targetConfig.isDebug()){
-                    System.err.println("[TargetBuilder] Tried to put the synonym already existing. [" + domain + "]. Ignoring this operation since the overwriting operation may occur recursive error.");
+                    System.err.println(Thread.currentThread().getName() + " - " + "[TargetBuilder] Tried to put the synonym already existing. [" + domain + "]. Ignoring this operation since the overwriting operation may occur recursive error.");
                 }
                 return this;
             }
@@ -248,7 +248,7 @@ public class Target implements Serializable{
         public TargetBuilder addKeyword(String keyword){
             if(this.targetConfig.isDebug()){
                 if(this.targetConfig.getKeywords().contains(flushSpaces(keyword))){
-                    System.err.println("[TargetBuilder] Tried to put the keyword already existing. [" + keyword + "].");
+                    System.err.println(Thread.currentThread().getName() + " - " + "[TargetBuilder] Tried to put the keyword already existing. [" + keyword + "].");
                 }
             }
             this.targetConfig.getKeywords().add(flushSpaces(keyword));
@@ -283,7 +283,7 @@ public class Target implements Serializable{
          */
         public TargetBuilder ignoreCase(){
             this.targetConfig.setCaseSensitive(false);
-            if(this.targetConfig.isDebug()) System.err.println("[TargetBuilder] Ignoring case set.");
+            if(this.targetConfig.isDebug()) System.err.println(Thread.currentThread().getName() + " - " + "[TargetBuilder] Ignoring case set.");
             return this;
         }
 
@@ -293,7 +293,7 @@ public class Target implements Serializable{
          */
         public TargetBuilder caseSensitive(){
             this.targetConfig.setCaseSensitive(true);
-            if(this.targetConfig.isDebug()) System.err.println("[TargetBuilder] Case Sensitive set.");
+            if(this.targetConfig.isDebug()) System.err.println(Thread.currentThread().getName() + " - " + "[TargetBuilder] Case Sensitive set.");
             return this;
         }
 
@@ -304,7 +304,7 @@ public class Target implements Serializable{
         public Target build(){
             Target target = new Target(this.targetConfig);
             if(targetConfig.isDebug()){
-                System.err.println("[TargetBuilder] Target generated. " + target.toString());
+                System.err.println(Thread.currentThread().getName() + " - " + "[TargetBuilder] Target generated. " + target.toString());
             }
             return target;
         }
