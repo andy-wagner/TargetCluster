@@ -70,7 +70,11 @@ public class Main {
         clusterKorea.make();
         clusterJapan.make();
 
-
+        /**
+         * Extracts Result
+         */
+        System.out.println(clusterKorea.takeAll());
+        System.out.println(clusterJapan.takeAll());
 
     }
 

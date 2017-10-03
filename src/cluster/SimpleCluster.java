@@ -41,7 +41,7 @@ public abstract class SimpleCluster<T> extends Cluster<T> {
     @Override
     public void make() {
         if(isDebug()){
-            System.out.println("[SimpleCluster] make called.");
+            System.err.println("[SimpleCluster] make called.");
         }
         if(this.clusteringRawMap == null) this.clusteringRawMap = new ConcurrentHashMap<>();
         final List<String> mergedList = DataSource.mergeAsList(this.dataSources);
@@ -71,7 +71,7 @@ public abstract class SimpleCluster<T> extends Cluster<T> {
                     final Set<String> found = super.getCategoryOfDetail(now);
                     if(found.size() > 0){
                         if(isDebug()){
-                            System.out.println("[SimpleCluster] keyword elected by getCategoryOfDetail => " + found);
+                            System.err.println("[SimpleCluster] keyword elected by getCategoryOfDetail => " + found);
                         }
                         detail = now;
                         /**
@@ -101,7 +101,7 @@ public abstract class SimpleCluster<T> extends Cluster<T> {
     @Override
     public T take(String category, String detail, String keyword) {
         if(isDebug()){
-            System.out.println(String.format("[SimpleCluster] take called. [%s, %s, %s]", category, detail, keyword));
+            System.err.println(String.format("[SimpleCluster] take called. [%s, %s, %s]", category, detail, keyword));
         }
         try{
             T ret = map(getData(category, detail, keyword));

@@ -55,4 +55,13 @@ public class SimpleClusterData {
         this.count = count;
     }
 
+    @Override
+    public String toString() {
+        return "SimpleClusterData{" +
+                "category='" + category + '\'' +
+                ", detailCategory='" + detailCategory + '\'' +
+                ", keyword='" + keyword + '\'' +
+                ", count=" + count +
+                '}';
+    }
 }
