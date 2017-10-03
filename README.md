@@ -63,13 +63,18 @@
             /**
              * DataSources
              */
-            DataSource dataSourceKorea = new SimpleDataSource("Some people make a mistake everyday in seoul, Korea.");
-            DataSource dataSourceJapan = new SimpleDataSource("Some people suicide everyday in Japan.");
+            DataSource dataSourceKorea1 = 
+                new SimpleDataSource("Some people make a mistake everyday in seoul, Korea.");
+            DataSource dataSourceKorea2 = 
+                new SimpleDataSource("every single person makes a mistake everyday in Korea.");
+            DataSource dataSourceJapan = 
+                new SimpleDataSource("Some people suicide everyday in Japan.");
     
             /**
-             * A Cluster Instance for Korea DataSource
+             * A Cluster Instance for Korea DataSource with multi-dataSource
              */
-            Cluster<SimpleClusterData> clusterKorea = new SimpleCluster<SimpleClusterData>(target, dataSourceKorea) {
+            Cluster<SimpleClusterData> clusterKorea = 
+            new SimpleCluster<SimpleClusterData>(target, dataSourceKorea1, dataSourceKorea2) {
                 @Override
                 public SimpleClusterData map(ClusteringRaw raw) {
                     return new SimpleClusterData(raw);
@@ -79,7 +84,8 @@
             /**
              * A Cluster Instance for Japan DataSource
              */
-            Cluster<SimpleClusterData> clusterJapan = new SimpleCluster<SimpleClusterData>(target, dataSourceJapan) {
+            Cluster<SimpleClusterData> clusterJapan = 
+            new SimpleCluster<SimpleClusterData>(target, dataSourceJapan) {
                 @Override
                 public SimpleClusterData map(ClusteringRaw raw) {
                     return new SimpleClusterData(raw);
@@ -103,7 +109,7 @@
              */
             System.out.println(Thread.currentThread().getName() + " - " + clusterKorea.takeAll());
             System.out.println(Thread.currentThread().getName() + " - " + clusterJapan.takeAll());
-            
+    
         }
 ```
 

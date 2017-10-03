@@ -6,10 +6,7 @@ import cluster.normalization.exceptions.InfiniteRecurrenceException;
 import source.DataSource;
 import target.Target;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -26,6 +23,15 @@ public abstract class SimpleCluster<T> extends Cluster<T> {
      * @param dataSources multi-dataSource
      */
     public SimpleCluster(Target target, List<DataSource> dataSources){
+        super(target, dataSources);
+    }
+
+    /**
+     * Constructor with multi-dataSource
+     * @param target target Configuration
+     * @param dataSources multi-dataSource
+     */
+    public SimpleCluster(Target target, DataSource... dataSources){
         super(target, dataSources);
     }
 
@@ -89,7 +95,22 @@ public abstract class SimpleCluster<T> extends Cluster<T> {
                         if(!(category != null && found.contains(category))) category = found.iterator().next();
                     }
                 }
-                if(flagState == FlagState.KEYWORD) keywords.add(now);
+                switch (flagState){
+                    case KEYWORD:
+                        keywords.add(now);
+                        break;
+                    case DETAIL:
+                        detail = now;
+                        break;
+                    case CATEGORY:
+                        category = now;
+                        break;
+                    case NOTHING:
+                        // Do Nothing
+                        break;
+                    default: break;
+                }
+
             } // End Of Keywords Loop
 
             if(keywords.size() > 0 && category != null){

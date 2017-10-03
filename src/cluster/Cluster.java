@@ -39,7 +39,7 @@ public abstract class Cluster<T> implements ICluster<T>{
     }
 
     /**
-     * Simple Constructor
+     * Default Use Constructor
      * @param target target instance
      * @param dataSources datasource instances
      */
@@ -49,6 +49,22 @@ public abstract class Cluster<T> implements ICluster<T>{
         this.dataSources = dataSources;
     }
 
+    /**
+     * Default Use Constructor
+     * @param target target instance
+     * @param dataSources datasource instances
+     */
+    public Cluster(Target target, DataSource... dataSources){
+        this();
+        this.target = target;
+        this.dataSources = Arrays.asList(dataSources);
+    }
+
+    /**
+     * Single DataSource Constructor
+     * @param target target instance
+     * @param dataSource datasource instance
+     */
     public Cluster(Target target, DataSource dataSource){
         this();
         this.target = target;
@@ -82,6 +98,7 @@ public abstract class Cluster<T> implements ICluster<T>{
             clusteringRaw.setCategory(category);
             clusteringRaw.setDetailCategory(detail);
             clusteringRaw.setKeyword(keyword);
+            clusteringRaw.setCount(1);
             return this.clusteringRawMap.put(key, clusteringRaw);
         }
     }

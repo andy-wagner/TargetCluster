@@ -48,9 +48,13 @@ public class AggregationFilter {
         Trie.TrieBuilder trieBuilder = Trie.builder()
                 .addKeywords(this.target.getKeywords())
                 .addKeywords(this.target.getCategory().keySet());
-        if(!this.target.isCaseSensitive()){
-            trieBuilder.ignoreCase();
-        }
+        /**
+         * The codes below are inactivated cause these occurs bug.
+         * trieBuilder.ignoreCase() means that trie ignores the case of the keywords not a source text to parse
+         */
+//        if(!this.target.isCaseSensitive()){
+//            trieBuilder.ignoreCase();
+//        }
 
         final Iterator<String> iterator = this.target.getCategory().keySet().iterator();
 
