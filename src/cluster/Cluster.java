@@ -88,19 +88,21 @@ public abstract class Cluster<T> implements ICluster<T>{
      */
     public ClusteringRaw putData(String category, String detail, String keyword){
         final String key = generateCategoryKey(category, detail, keyword);
+        final ClusteringRaw clusterData;
         if(this.clusteringRawMap.containsKey(key)){
-            final ClusteringRaw existing = this.clusteringRawMap.get(key);
-            int count = existing.getCount();
-            existing.setCount(count + 1);
-            return existing;
+            clusterData = this.clusteringRawMap.get(key);
+            int count = clusterData.getCount();
+            clusterData.setCount(count + 1);
         }else{
-            ClusteringRaw clusteringRaw = new ClusteringRaw();
-            clusteringRaw.setCategory(category);
-            clusteringRaw.setDetailCategory(detail);
-            clusteringRaw.setKeyword(keyword);
-            clusteringRaw.setCount(1);
-            return this.clusteringRawMap.put(key, clusteringRaw);
+            clusterData = new ClusteringRaw();
+            clusterData.setCategory(category);
+            clusterData.setDetailCategory(detail);
+            clusterData.addKeyword(keyword);
+            clusterData.setCount(1);
+            this.clusteringRawMap.put(key, clusterData);
         }
+        clusterData.addKeyword(keyword);
+        return clusterData;
     }
 
     /**

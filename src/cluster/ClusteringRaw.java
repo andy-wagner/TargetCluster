@@ -1,5 +1,6 @@
 package cluster;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -11,21 +12,42 @@ public class ClusteringRaw {
 
     private String category;
     private String detailCategory;
-    private String keyword;
+    private Map<String, Integer> keywords;
     private int count = 0;
 
     public ClusteringRaw(String category, String detailCategory, int count) {
+        this();
         this.category = category;
         this.detailCategory = detailCategory;
         this.count = count;
     }
 
     public ClusteringRaw(String category, String detailCategory) {
+        this();
         this.category = category;
         this.detailCategory = detailCategory;
     }
 
-    public ClusteringRaw(){}
+    public ClusteringRaw(){
+        this.keywords = new HashMap<>();
+    }
+
+    public void addKeyword(String keyword){
+        if(this.keywords.containsKey(keyword)){
+            int count = this.keywords.get(keyword);
+            this.keywords.put(keyword, count + 1);
+        }else{
+            this.keywords.put(keyword, 1);
+        }
+    }
+
+    public Map<String, Integer> getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(Map<String, Integer> keywords) {
+        this.keywords = keywords;
+    }
 
     public String getCategory() {
         return category;
@@ -55,11 +77,4 @@ public class ClusteringRaw {
         this.count++;
     }
 
-    public String getKeyword() {
-        return keyword;
-    }
-
-    public void setKeyword(String keyword) {
-        this.keyword = keyword;
-    }
 }

@@ -2,6 +2,8 @@ package cluster.model;
 
 import cluster.ClusteringRaw;
 
+import java.util.Map;
+
 /**
  * @author EuiJin.Ham
  * @version 1.0.0
@@ -11,7 +13,7 @@ public class SimpleClusterData {
 
     private String category;
     private String detailCategory;
-    private String keyword;
+    private Map<String, Integer> keywords;
     private int count = 0;
 
     /**
@@ -27,7 +29,7 @@ public class SimpleClusterData {
     public SimpleClusterData(ClusteringRaw raw){
         this.category = raw.getCategory();
         this.detailCategory = raw.getDetailCategory();
-        this.keyword = raw.getKeyword();
+        this.keywords = raw.getKeywords();
         this.count = raw.getCount();
     }
 
@@ -60,7 +62,7 @@ public class SimpleClusterData {
         return "SimpleClusterData{" +
                 "category='" + category + '\'' +
                 ", detailCategory='" + detailCategory + '\'' +
-                ", keyword='" + keyword + '\'' +
+                ", keyword='" + keywords + '\'' +
                 ", count=" + count +
                 '}';
     }
