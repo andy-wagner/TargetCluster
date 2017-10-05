@@ -5,7 +5,7 @@ import java.util.Map;
 
 /**
  * @author EuiJin.Ham
- * @version 1.0.0
+ * @version 1.0.5
  * @description A Class for storing entire Clustered data
  */
 public class ClusteringRaw {
@@ -32,6 +32,10 @@ public class ClusteringRaw {
         this.keywords = new HashMap<>();
     }
 
+    /**
+     * A Method for adding an elected keyword
+     * @param keyword keyword to input
+     */
     public void addKeyword(String keyword){
         if(this.keywords.containsKey(keyword)){
             int count = this.keywords.get(keyword);
