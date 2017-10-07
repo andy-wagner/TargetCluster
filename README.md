@@ -1,6 +1,6 @@
 # TargetCluster [비정형 데이터 카테고리 클러스터]
 
-#### A Clustering Utilities for collecting text-based statistic data with a intuitive builder.
+#### Clustering Utilities for collecting text-based statistic data with a intuitive builder.
 #### 직관적인 빌더를 이용하여 문자열 기반 통계자료를 수집하는 군집화 유틸리티
 
 ## Overview
